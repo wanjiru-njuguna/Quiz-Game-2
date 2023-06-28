@@ -25,11 +25,19 @@ for q in range(0, num_play_questions):
    # ques_class = one Question class element in the 'questions' list
    ques_class = questions[q]
 
-   print(f"QUESTION {q + 1}: {ques_class.questionZ}")
+   print(f"QUESTION {q + 1}: {ques_class.question}")
+
+
+   #randomize the multiple choice answers by converting the dictionary into a list.
+   random_answers = list(ques_class.answers.items())
+   random.shuffle(random_answers )
 
    # Print multiple choice answers
    a = 'A'
-   for answer in ques_class.answers.values():
+   #for answer in ques_class.answers.values():
+   answer_numbers=[]
+   for k, answer in random_answers:
+      answer_numbers.append(k)
       print(f"  {a}: {answer}")
       a = chr(ord(a) + 1)
 
@@ -49,8 +57,8 @@ for q in range(0, num_play_questions):
    # checking for the correct answer
    
    index_user_answer = ord(user_answer) - ord('A')
-   multiple_choice_answer_list = list(ques_class.answers.keys())
-   key_user_answer = multiple_choice_answer_list[index_user_answer]
+   
+   key_user_answer = answer_numbers[index_user_answer]
 
    correct_answer_key = ques_class.correct_answer
    if correct_answer_key == key_user_answer:

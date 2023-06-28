@@ -6,7 +6,7 @@
 
 class Question:
   def __init__(self, _question, _answers, _answer):
-    self.questionZ = _question        # Question itself
+    self.question = _question        # Question itself
     self.answers = _answers          # Dictionary of answers: key=unique int, value=multiple-choice answer as a string
     self.correct_answer = _answer    # Key in 'answers' that is the correct answer
 
